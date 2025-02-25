@@ -7,7 +7,7 @@ $pass = "";
 
 try {
     $dbh = new PDO("mysql:host=$host;dbname=$db", $user, $pass);
-    echo "connection made";
+    echo "connected to database Winke;";
 } catch (PDOException $e) {
     // attempt to retry the connection after some timeout for example
     echo "connection failed";
