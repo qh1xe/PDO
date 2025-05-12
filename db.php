@@ -8,12 +8,22 @@ public function __construct($db = "periode4", $user="root", $pwd="", $host="loca
         $this->pdo = new PDO("mysql:host=$host;dbname=$db", $user, $pwd);
         // set the PDO error mode to exception
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        echo "Connected successfully";
       } catch(PDOException $e) {
         echo "Connection failed: " . $e->getMessage();
       }
   }
-}
+
+  public function aanmelden($naam, $email, $password) {
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    $SQL = "INSERT INTO users (naam, email, password) VALUES (:naam, :email, :password)";
+    $stmt = $this->pdo->prepare($SQL);
+    $stmt->execute([
+      "naam" => $naam,
+      "email" => $email,
+      "password" => $hash
+    ]);
+   }
+};
 
 $pdo = new database;
 
