@@ -23,6 +23,23 @@ public function __construct($db = "periode4", $user="root", $pwd="", $host="loca
       "password" => $hash
     ]);
    }
+
+   public function login($email) {
+    $stmt = $this->pdo->prepare("SELECT * From users WHERE email = :email");
+    $stmt->execute(["email"=>$email]);
+    return $stmt->fetch();
+   }
+
+   public function insertProduct($naam, $prijs, $omschrijving) {
+    $SQL = "INSERT INTO product (naam, prijs, omschrijving) VALUES (:naam, :prijs, :omschrijving)";
+    $stmt = $this->pdo->prepare($SQL);
+    $stmt->execute([
+      "naam" => $naam,
+      "prijs" => $prijs,
+      "omschrijving" => $omschrijving
+    ]);
+   }
+   
 };
 
 $pdo = new database;
