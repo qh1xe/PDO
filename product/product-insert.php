@@ -4,7 +4,7 @@ require "../db.php";
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     try {
-        $pdo->aanmelden($_POST['naam'], $_POST['prijs'], $_POST['omschrijving']);
+        $pdo->producten($_POST['naam'], $_POST['prijs'], $_POST['omschrijving']);
         echo "product toegevoegd!";
     } catch (PDOException $e) {
         echo $e;

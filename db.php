@@ -30,8 +30,8 @@ public function __construct($db = "periode4", $user="root", $pwd="", $host="loca
     return $stmt->fetch();
    }
 
-   public function insertProduct($naam, $prijs, $omschrijving) {
-    $SQL = "INSERT INTO product (naam, prijs, omschrijving) VALUES (:naam, :prijs, :omschrijving)";
+   public function producten($naam, $prijs, $omschrijving) {
+    $SQL = "INSERT INTO producten (naam, prijs, omschrijving) VALUES (:naam, :prijs, :omschrijving)";
     $stmt = $this->pdo->prepare($SQL);
     $stmt->execute([
       "naam" => $naam,
