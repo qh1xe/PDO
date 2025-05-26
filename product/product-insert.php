@@ -27,5 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <input type="omschrijving" name="omschrijving" placeholder="Omschrijving" required>
         <input type="submit" name="Submit">
     </form>
+
+        <a href="../user/dashboard.php"> terug naar dashboard </a>
 </body>
 </html>
